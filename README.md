@@ -1,6 +1,6 @@
 # Makola Online
 
-Makola2.0 is an updated version of Makola Online web app. It is a web-based marketplace built with **Next.js (App Router) with TypeScript and TailwindCSS** for the frontend and **Express.js with TypeScript** for the backend. 
+Makola2.0 is an updated version of the Makola Online web app. It is a web-based marketplace built with **Next.js (App Router) with TypeScript and TailwindCSS** for the frontend and **Express.js with TypeScript** for the backend. 
 It provides a seamless shopping experience, allowing users to browse and purchase items efficiently.
 
 ## Features
