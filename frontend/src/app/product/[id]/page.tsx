@@ -22,7 +22,7 @@ export default function ProductPage() {
 
   useEffect(() => {
     if (!id) return; // Ensure id is available before fetching
-    fetch(`http://localhost:5000/api/products/${id}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data))
       .catch((error) => console.error("Error fetching product:", error));
