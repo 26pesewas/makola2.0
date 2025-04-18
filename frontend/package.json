@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "postinstall": "chmod +x ./node_modules/.bin/next"
+    "lint": "next lint"
   },
   "dependencies": {
     "lucide-react": "^0.485.0",
