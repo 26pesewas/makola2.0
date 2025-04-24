@@ -1,5 +1,5 @@
 # Makola2.0 -Upgraded version of Makola Online
-
+# Click to test app: https://makola2-0-1ypa69t4x-phyllis-laryeas-projects.vercel.app/shop
 Makola2.0 is a web-based marketplace built with **Next.js (App Router) with TypeScript and TailwindCSS** for the frontend and **Express.js with TypeScript** for the backend. 
 It provides a seamless shopping experience, allowing users to browse and purchase items efficiently.
 
@@ -23,6 +23,10 @@ It provides a seamless shopping experience, allowing users to browse and purchas
 
   ### Database:
 - **MongoDB** – NoSQL database for product storage.
+
+### Deployment
+- **Backend** - Render
+- **Frontend** - Vercel
 
  ### 🚀 Further Improvements
 - **User Authentication**: Add login/signup with user accounts.
