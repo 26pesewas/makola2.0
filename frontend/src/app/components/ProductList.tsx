@@ -15,7 +15,7 @@ export default function ProductList() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("${process.env.NEXT_PUBLIC_API_URL}/api/products")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`)
       .then((res) => res.json())
       .then((data) => {
         // Filter only the selected products
