@@ -55,8 +55,8 @@ export default function ShopPage() {
           </ul>
         </aside>
 
-        {/* Products Grid - Takes 1 column on mobiles and more than 2 columns on larger screens*/}
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:col-span-3">
+        {/* Products Grid - Takes 1 column on mobiles and 2 columns on larger screens*/}
+        <div className="col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-6">
           {filteredProducts.map((product) => (
             <Link key={product._id} href={`/product/${product._id}`}>
             <div key={product._id} className="bg-neutral-200 p-4 rounded shadow">
