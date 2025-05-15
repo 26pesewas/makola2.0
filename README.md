@@ -1,5 +1,5 @@
 # Makola2.0 -Upgraded version of Makola Online
-# [Check out Makola Online here!](https://makola2-0-l3ranif5x-phyllis-laryeas-projects.vercel.app/shop)
+# [Check out Makola Online here!](https://makola2-0-l3ranif5x-phyllis-laryeas-projects.vercel.app)
 Makola2.0 is a web-based marketplace built with **Next.js (App Router) with TypeScript and TailwindCSS** for the frontend and **Express.js with TypeScript** for the backend. 
 It provides a seamless shopping experience, allowing users to browse and purchase items efficiently.
 
