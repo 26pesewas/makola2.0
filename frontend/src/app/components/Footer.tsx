@@ -29,7 +29,7 @@ const Footer = () => {
         </div>
       </div>
       <p className="py-4 text-center text-xs md:text-sm text-gray-900 bg-neutral-200">
-        ©2025 JollofDevelopers All Right Reserved.
+        ©2025 JollofDevelopers All Rights Reserved.
       </p>
     </footer>
   );
