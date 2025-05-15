@@ -41,9 +41,9 @@ export default function ShopPage() {
       />
 
       {/* Sidebar & Products Grid */}
-      <div className="grid grid-cols-4 gap-6">
+      <div className="flex flex-col md:grid md:grid-cols-4 gap-6">
         {/* Sidebar - Takes 1 column */}
-        <aside className="col-span-1 bg-neutral-200 p-4 shadow-lg rounded">
+        <aside className="bg-neutral-200 p-4 shadow-lg rounded w-full md:col-span-1">
           <h2 className="font-semibold text-lg text-black">Products</h2>
           <ul className="space-y-2 text-gray-700 divide-y-1 divide-gray-300">
             <li>Beverages</li>
@@ -55,8 +55,8 @@ export default function ShopPage() {
           </ul>
         </aside>
 
-        {/* Products Grid - Takes 3 columns */}
-        <div className="col-span-3 grid grid-cols-2 gap-6">
+        {/* Products Grid - Takes 1 column on mobiles and more than 2 columns on larger screens*/}
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:col-span-3">
           {filteredProducts.map((product) => (
             <Link key={product._id} href={`/product/${product._id}`}>
             <div key={product._id} className="bg-neutral-200 p-4 rounded shadow">
