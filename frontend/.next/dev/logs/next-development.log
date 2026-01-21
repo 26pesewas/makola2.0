@@ -1,0 +1,9 @@
+[00:00:02.237] Server  LOG     ✓ Ready in 1658ms
+[00:00:22.116] Server  LOG     ○ Compiling / ...
+[00:00:23.034] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:02:56.223] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:04:21.261] Server  LOG     ✓ Compiled in 648ms
+[01:33:28.458] Server  LOG     ✓ Compiled in 147ms
+[01:34:28.586] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. Grains & Powders
+[01:34:28.586] Browser ERROR   Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. Grains & Powders
+[01:36:02.985] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
