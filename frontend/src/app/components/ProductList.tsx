@@ -31,7 +31,6 @@ export default function ProductList() {
   return (
     <section className="p-8 flex flex-col items-center bg-neutral-100 text-black min-h-screen">
       <h2 className="text-2xl font-bold mb-1">Products</h2>
-      <hr className="w-16 border-t-1 border-black mx-auto mb-3" />
       <div className="grid grid-cols-2 gap-8 place-items-center">
         {products.map((product) => (
           <div key={product._id} className="flex flex-col items-center">

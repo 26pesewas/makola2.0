@@ -2,7 +2,7 @@ export default function Hero() {
     return (
       <section 
         className="min-h-screen bg-cover bg-center flex flex-col justify-center items-center text-white text-center p-8"
-        style={{ backgroundImage: "url('/img/makola.png')" }} // Replace with your image
+        style={{ backgroundImage: "url('/img/makola.png')" }}
       >
         <h2 className="text-5xl font-bold">Welcome to Makola Online</h2>
         <p className="text-lg mt-4 max-w-lg">

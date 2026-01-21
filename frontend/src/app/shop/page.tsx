@@ -46,12 +46,10 @@ export default function ShopPage() {
         <aside className="bg-neutral-200 p-4 shadow-lg rounded w-full md:col-span-1">
           <h2 className="font-semibold text-lg text-black">Products</h2>
           <ul className="space-y-2 text-gray-700 divide-y-1 divide-gray-300">
-            <li>Beverages</li>
-            <li>Rice and grains</li>
-            <li>Drinks</li>
-            <li>Cereal</li>
-            <li>Self-care</li>
-            <li>Kanta Online (Upcycled clothes)</li>
+            <li>Makola Veggies</li>
+            <li>Makola Grains and Powders</li>
+            <li>Teshie Cold Store</li>
+            <li>KantaOnline (Upcycled clothes)</li>
           </ul>
         </aside>
 
@@ -59,7 +57,7 @@ export default function ShopPage() {
         <div className="col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-6">
           {filteredProducts.map((product) => (
             <Link key={product._id} href={`/product/${product._id}`}>
-            <div key={product._id} className="bg-neutral-200 p-4 rounded shadow">
+            <div className="bg-neutral-200 p-4 rounded shadow">
               <img src={product.image} alt={product.name} className="w-full h-48 object-contain rounded" />
               <h3 className="text-lg font-semibold text-gray-700">{product.name}</h3>
               <p className="text-gray-600">GHS {product.price}</p>
