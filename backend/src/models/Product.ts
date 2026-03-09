@@ -12,4 +12,9 @@ const productSchema = new mongoose.Schema({
 // Creating Product model
 const Product = mongoose.model("Product", productSchema);
 
+// mongoose.connection.once("open", () => {
+//   console.log("DB name:", mongoose.connection.name);
+// });
+
+
 export default Product;
