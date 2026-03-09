@@ -12,16 +12,17 @@ interface Product {
   image: string;
   description: string;
   stock: number;
+  category?: string;
 }
 
 export default function ProductPage() {
-  const { id } = useParams(); // Get ID dynamically from the URL
+  const { id } = useParams();
   const router = useRouter();
   const [product, setProduct] = useState<Product | null>(null);
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
-    if (!id) return; // Ensure id is available before fetching
+    if (!id) return;
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data))
@@ -30,78 +31,98 @@ export default function ProductPage() {
 
   const handleAddToCart = () => {
     if (!product) return;
-
-    // Get existing cart items from local storage
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-
-    // Add new item to cart
     const newCart = [...cart, { ...product, quantity }];
-
-    // Save back to local storage
     localStorage.setItem("cart", JSON.stringify(newCart));
-
-    // Redirect to Cart Page
     router.push("/cart");
   };
 
-  if (!product) return <p className="text-center text-gray-600">Loading...</p>;
+  // Loading State - You can eventually use your mustard pulse here too!
+  if (!product) return (
+    <div className="flex items-center justify-center min-h-screen">
+      <p className="text-[10px] font-black uppercase tracking-[0.4em] text-yellow-600 animate-pulse">Loading Details...</p>
+    </div>
+  );
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Navbar - Full width */}
-      <header className="w-full shadow-md">
-        <Navbar />
-      </header>
+    <div className="flex flex-col min-h-screen bg-white">
+      <Navbar />
 
-      {/* Main content */}
-      <main className="flex-grow max-w-5xl mx-auto p-6 bg-neutral-200 shadow rounded-lg mt-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 divide-x-1 divide-gray-300">
-          {/* Product Image */}
-          <img
-            src={product.image}
-            alt={product.name}
-            className="w-full h-96 object-contain rounded"
-          />
+      <main className="flex-grow max-w-7xl mx-auto w-full p-6 lg:py-20">
+        <div className="flex flex-col md:flex-row gap-12 lg:gap-24">
+          
+          {/* LEFT: Product Image - Clean & Sharp */}
+          <div className="flex-1 bg-white border border-neutral-100 p-8 flex items-center justify-center transition-all duration-500 hover:shadow-sm">
+            <img
+              src={product.image}
+              alt={product.name}
+              className="w-full h-auto max-h-[550px] object-contain transition-transform duration-700 hover:scale-105"
+            />
+          </div>
 
-          {/* Product Details */}
-          <div>
-            <h1 className="text-3xl font-bold text-gray-800">{product.name}</h1>
-            <p className="text-2xl text-gray-700 my-4">GHS {product.price}</p>
-            <p className="text-gray-600 mb-6 leading-relaxed">{product.description}</p>
-            <p className="text-gray-600 mb-4">Stock: {product.stock > 0 ? product.stock : "Out of Stock"}</p>
-            
-            {/* Quantity Selector */}
+          {/* RIGHT: Product Details - Bold & Airy */}
+          <div className="flex-1 space-y-8 py-4">
+            <div className="space-y-4">
+              <h1 className="text-3xl lg:text-4xl font-black uppercase tracking-tight text-black leading-tight">
+                {product.name}
+              </h1>
+              <p className="text-2xl font-bold text-yellow-600">
+                GHS {product.price}
+              </p>
+            </div>
+
+            <div className="space-y-4">
+               <p className="text-neutral-500 leading-relaxed text-sm max-w-lg">
+                {product.description}
+              </p>
+              
+              {/* Stock Badge */}
+              <div className="flex items-center gap-2">
+                <span className={`w-2 h-2 rounded-full ${product.stock > 0 ? 'bg-green-500' : 'bg-red-500'}`} />
+                <p className="text-[10px] font-black uppercase tracking-widest text-neutral-400">
+                  {product.stock > 0 ? `${product.stock} ITEMS AVAILABLE` : "OUT OF STOCK"}
+                </p>
+              </div>
+            </div>
+
+            {/* ACTION SECTION */}
             {product.stock > 0 && (
-              <div className="mb-4">
-                <label className="inline text-gray-700 mb-2">Quantity:</label>
-                <select
-                  className="border p-2 rounded text-gray-500"
-                  value={quantity}
-                  onChange={(e) => setQuantity(Number(e.target.value))}
+              <div className="space-y-6 pt-4">
+                <div className="flex flex-col space-y-2">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-black">Quantity</span>
+                  <div className="flex items-center border border-neutral-200 w-max bg-white">
+                    <button 
+                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                      className="px-4 py-2 hover:bg-neutral-50 transition-colors font-bold border-r border-neutral-200"
+                    >-</button>
+                    <span className="px-8 py-2 font-black text-xs text-black">{quantity}</span>
+                    <button 
+                      onClick={() => setQuantity(Math.min(product.stock, quantity + 1))}
+                      className="px-4 py-2 hover:bg-neutral-50 transition-colors font-bold border-l border-neutral-200"
+                    >+</button>
+                  </div>
+                </div>
+
+                <button
+                  onClick={handleAddToCart}
+                  className="w-full md:w-80 py-4 bg-black text-white font-black uppercase tracking-[0.2em] text-[10px] hover:bg-yellow-600 transition-all duration-500 shadow-xl hover:shadow-yellow-600/20 active:scale-95"
                 >
-                  {[...Array(product.stock).keys()].map((num) => (
-                    <option key={num + 1} value={num + 1}>{num + 1}</option>
-                  ))}
-                </select>
+                  Add to Cart
+                </button>
               </div>
             )}
 
-            {/* Add to Cart Button */}
-            <button
-              onClick={handleAddToCart}
-              className={`px-6 py-3 rounded-lg transition text-white ${product.stock > 0 ? "bg-neutral-800 hover:bg-neutral-700" : "bg-gray-400 cursor-not-allowed"}`}
-              disabled={product.stock === 0}
-            >
-              {product.stock > 0 ? "Add to Cart" : "Out of Stock"}
-            </button>
+            {/* Category Tagging for better UX */}
+            <div className="pt-10 border-t border-neutral-100">
+              <p className="text-[10px] font-black uppercase tracking-widest text-neutral-400">
+                Category: <span className="text-black ml-2">{product.category || "General"}</span>
+              </p>
+            </div>
           </div>
         </div>
       </main>
 
-      {/* Footer - Full width */}
-      <footer className="w-full mt-6">
-        <Footer />
-      </footer>
+      <Footer />
     </div>
   );
 }

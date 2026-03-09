@@ -7,6 +7,11 @@ const productSchema = new mongoose.Schema({
   description: { type: String, required: true },
   image: { type: String, required: false }, // URL of the product image
   stock: { type: Number, required: true, default: 1 },
+  category: { 
+    type: String, 
+    required: true,
+    enum: ['Makola Fruits and Veggies', 'Grains and Powders', 'Teshie Coldstore', 'KantaOnline']
+  }
 });
 
 // Creating Product model

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
+import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -16,64 +16,120 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Simulate sending an email (Backend integration needed for actual sending)
     setIsSubmitted(true);
   };
 
   return (
-    <div className= "flex flex-col min-h-screen ">
-      <header className="w-full shadow-md">
-        <Navbar />
-      </header>
+    <div className="flex flex-col min-h-screen bg-white">
+      <Navbar />
 
-      <main className="flex-grow max-w-5xl mx-auto p-6 bg-slate-800 shadow rounded-lg mt-6">
-        <h1 className="text-3xl font-bold text-gray-100 mb-6 border-b-1 border-b-gray-600">Contact Us</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Business Details */}
-          <div className="p-6 rounded shadow">
-            <h2 className="text-2xl font-semibold mb-4 text-gray-100">Our Contact Details</h2>
-            <p className="text-gray-100 mb-2">📍 Location: Accra, Ghana</p>
-            <p className="text-gray-100 mb-2">📧 Email: naakuokor@gmail.com</p>
-            <p className="text-gray-100 mb-2">📞 Phone: +233 26 977 6695</p>
+      <main className="flex-grow max-w-6xl mx-auto w-full p-6 lg:py-20">
+        <div className="border-b-1 border-black pb-8 mb-16">
+          <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-black">
+            Contact Us
+          </h1>
+          <p className="mt-4 text-neutral-600 font-black uppercase text-[10px] tracking-[0.4em]">
+            Get in touch with the Makola Online team
+          </p>
+        </div>
+
+        <div className="flex flex-col lg:flex-row gap-20">
+          
+          <div className="flex-1 space-y-12">
+            <h2 className="text-2xl font-black uppercase tracking-tight text-black">
+              Our Details
+            </h2>
+            
+            <div className="space-y-10">
+              <div className="flex items-start gap-6">
+                <div className="bg-neutral-50 p-4 border border-neutral-100">
+                  <MapPin className="w-6 h-6 text-yellow-600" />
+                </div>
+                <div>
+                  <h3 className="font-black uppercase text-[10px] tracking-widest text-neutral-400 mb-1">Location</h3>
+                  <p className="font-bold text-black uppercase text-sm">Accra, Ghana</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-6">
+                <div className="bg-neutral-50 p-4 border border-neutral-100">
+                  <Mail className="w-6 h-6 text-yellow-600" />
+                </div>
+                <div>
+                  <h3 className="font-black uppercase text-[10px] tracking-widest text-neutral-400 mb-1">Email</h3>
+                  <p className="font-bold text-black text-sm lowercase">naakuokor@gmail.com</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-6">
+                <div className="bg-neutral-50 p-4 border border-neutral-100">
+                  <Phone className="w-6 h-6 text-yellow-600" />
+                </div>
+                <div>
+                  <h3 className="font-black uppercase text-[10px] tracking-widest text-neutral-400 mb-1">Phone</h3>
+                  <p className="font-bold text-black text-sm">+233 26 977 6695</p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="p-6 rounded shadow">
-            <h2 className="text-2xl font-semibold mb-4 text-gray-100">Get in Touch</h2>
+          <div className="flex-[1.5] bg-neutral-50 p-10 md:p-16 border border-neutral-100 shadow-sm">
             {isSubmitted ? (
-              <p className="text-green-600 font-semibold">Thank you! Your message has been sent.</p>
+              <div className="text-center py-20 space-y-4">
+                <p className="text-green-600 font-black uppercase text-xs tracking-widest italic">Success</p>
+                <h3 className="text-2xl font-black uppercase tracking-tighter text-black">Message Received</h3>
+                <button 
+                   onClick={() => setIsSubmitted(false)}
+                   className="text-[10px] font-black uppercase tracking-widest text-yellow-600 hover:underline pt-4"
+                >
+                  Send another message
+                </button>
+              </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  required
-                  className="w-full p-2 border rounded text-gray-400"
-                  value={formData.name}
-                  onChange={handleChange}
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  required
-                  className="w-full p-2 border rounded text-gray-400"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-                <textarea
-                  name="message"
-                  placeholder="Type your message here"
-                  required
-                  className="w-full p-2 border rounded text-gray-400"
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
-                ></textarea>
-                <button
+              <form onSubmit={handleSubmit} className="space-y-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="flex flex-col space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-neutral-500">Full Name</label>
+                    <input 
+                      type="text" 
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="bg-white border-2 border-neutral-200 focus:border-black px-4 py-3 text-sm text-black transition-all placeholder:text-neutral-400 outline-none" 
+                      placeholder="Enter your name"
+                    />
+                  </div>
+                  <div className="flex flex-col space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-neutral-500">Email Address</label>
+                    <input 
+                      type="email" 
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="bg-white border-2 border-neutral-200 focus:border-black px-4 py-3 text-black text-sm transition-all placeholder:text-neutral-400 outline-none" 
+                      placeholder="email@example.com"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex flex-col space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-neutral-500">Your Message</label>
+                  <textarea 
+                    name="message"
+                    required
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows={4}
+                    className="bg-white border-2 border-neutral-200 focus:border-black px-4 py-3 text-sm  text-black transition-all placeholder:text-neutral-400 outline-none resize-none" 
+                    placeholder="Type your message here..."
+                  />
+                </div>
+
+                <button 
                   type="submit"
-                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                  className="w-full md:w-auto px-12 py-5 text-black font-black uppercase tracking-[0.3em] text-[10px] border-neutral-700 hover:bg-yellow-600 transition-all duration-200 shadow-xl active:scale-95"
                 >
                   Send Message
                 </button>
@@ -83,9 +139,7 @@ export default function ContactPage() {
         </div>
       </main>
 
-      <footer className="w-full mt-6">
-        <Footer />
-      </footer>
+      <Footer />
     </div>
   );
 }

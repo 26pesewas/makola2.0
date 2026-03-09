@@ -1,6 +1,6 @@
 const sections = [
   {
-    title: "Makola Veggies",
+    title: "Makola Fruits and Veggies",
     desc: "Nature’s Best, Delivered. Sourced daily from local farmers to ensure your kitchen is always stocked with vibrant, organic greens.",
     img: "/img/veggies.png",
     reverse: false

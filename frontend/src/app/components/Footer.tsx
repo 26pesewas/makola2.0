@@ -1,36 +1,79 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer>
-      <div className="flex flex-col md:flex-row items-center md:items-start justify-center px-6 md:px-16 lg:px-32 gap-10 py-14 bg-neutral-200 border-b border-gray-500/30 text-gray-500 text-center md:text-left">
-        <div className="w-4/5 flex flex-col items-center md:items-start">
-          <Image width={200} height={200} className="w-35 md:w-32" src="/logo.png" alt="logo" />
-        </div>
+    <footer className="w-full bg-white border-t-1 border-black pt-20 pb-10 mt-20">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-20 text-center md:text-left">
+          
+          {/* Column 1: Brand & Logo Area */}
+<div className="flex flex-col items-center md:items-start space-y-6">
+  {/* Change items-center to flex-col and keep md:items-start */}
+  <div className="flex flex-col items-center md:items-start gap-2">
+    <Image 
+      width={60} // Slightly increased width since it's now solo
+      height={60} 
+      className="w-auto h-auto object-contain" 
+      src="/makola_logo.svg" 
+      alt="MakolaOnline Logo" 
+    />
+    <span className="font-black uppercase tracking-tighter text-xl text-black">
+      MakolaOnline
+    </span>
+  </div>
+</div>
 
-        <div className="w-full md:w-1/2 flex flex-col items-center md:items-start">
-          <h2 className="font-medium text-gray-900 mb-5">Company</h2>
-          <ul className="text-sm space-y-2">
-            <li><Link href="/" className="hover:underline transition">Home</Link></li>
-            <li><Link href="/shop" className="hover:underline transition">Shop</Link></li>
-            <li><Link href="/cart" className="hover:underline transition">Cart</Link></li>
-            <li><Link href="/contact" className="hover:underline transition">Contact Us</Link></li>
-          </ul>
-        </div>
+          {/* Column 2: Navigation Links */}
+          <div className="flex flex-col items-center md:items-start">
+            <h2 className="font-black uppercase text-[11px] tracking-[0.4em] text-black mb-8">Company</h2>
+            <ul className="flex flex-col space-y-4">
+              <li>
+                <Link href="/" className="text-[11px] font-bold uppercase tracking-widest text-neutral-500 hover:text-yellow-600 transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/shop" className="text-[11px] font-bold uppercase tracking-widest text-neutral-500 hover:text-yellow-600 transition-colors">
+                  Shop
+                </Link>
+              </li>
+              <li>
+                <Link href="/cart" className="text-[11px] font-bold uppercase tracking-widest text-neutral-500 hover:text-yellow-600 transition-colors">
+                  Cart
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-[11px] font-bold uppercase tracking-widest text-neutral-500 hover:text-yellow-600 transition-colors">
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
+          </div>
 
-        <div className="w-full md:w-1/2 flex flex-col items-center md:items-start">
-          <h2 className="font-medium text-gray-900 mb-5">Get in touch</h2>
-          <div className="text-sm space-y-2">
-            <p>+233269776695</p>
-            <p>naakuokor@gmail.com</p>
+          {/* Column 3: Contact Details */}
+          <div className="flex flex-col items-center md:items-start">
+            <h2 className="font-black uppercase text-[11px] tracking-[0.4em] text-black mb-8">Get in touch</h2>
+            <div className="flex flex-col space-y-4 text-[11px] font-bold uppercase tracking-widest text-neutral-500">
+              <span className="hover:text-black transition-colors cursor-default">+233269776695</span>
+              <a href="mailto:naakuokor@gmail.com" className="hover:text-yellow-600 transition-colors">
+                naakuokor@gmail.com
+              </a>
+              <p className="text-neutral-600 pt-2">Accra, Ghana</p>
+            </div>
           </div>
         </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-neutral-100 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-[9px] font-black uppercase tracking-[0.3em] text-neutral-600">
+            ©2026 JollofDevelopers All Rights Reserved.
+          </p>
+        </div>
       </div>
-      <p className="py-4 text-center text-xs md:text-sm text-gray-900 bg-neutral-200">
-        ©2025 JollofDevelopers All Rights Reserved.
-      </p>
     </footer>
   );
 };
