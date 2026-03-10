@@ -46,7 +46,7 @@ export default function AboutSection() {
             and affordability into one trusted platform, making it easier for customers to access specific products from Makola Market
             without leaving the comfort of their homes. At the same time, we work to empower vendors by introducing digital payments such
             as Mobile Money and bank transfers, encouraging financial inclusion, and supporting sustainable income growth. 
-            Makola Online bridges the gap between tradition and technology, smaking the market work better for everyone.
+            Makola Online bridges the gap between tradition and technology, making the market work better for everyone.
           </p>
 
         <Link href="/contact">
